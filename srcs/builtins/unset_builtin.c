@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 #include "builtins.h"
 
 int	search_env_content(t_list *env_list, char *key, t_node	**res);

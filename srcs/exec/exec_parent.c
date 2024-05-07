@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 //	If close failed: exit(ERR_CLOSE_FAILED)
 static void	close_unused_pipe(t_sh_data *sh_data, int proc_num)

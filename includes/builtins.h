@@ -13,7 +13,7 @@
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
-# include "../libft.h"
+# include "libft.h"
 # include <errno.h>
 
 # define NOT_A_BUILTIN -1

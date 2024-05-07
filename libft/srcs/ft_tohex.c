@@ -19,7 +19,7 @@ char	*ft_tohex(size_t n, int is_upper)
 	int		len;
 	char	hex;
 
-	len = ft_ullen(n);
+	len = ft_ullen(n, 16);
 	hex_num = (char *)malloc(sizeof(char) * (len + 1));
 	if (!hex_num)
 		exit(ERR_MALLOC);

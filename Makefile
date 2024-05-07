@@ -1,58 +1,57 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBREADLINEFLAGS = -lreadline
+
 NAME = minishell
-NAME_H = minishell.h builtins/builtins.h
+
 LIBFT = libft.a
 LIBFT_DIR = libft
 LIBFT_H = libft.h
-BUILTINS_SRC = builtins/builtins.c builtins/builtins_util.c \
-builtins/echo_builtin.c builtins/cd_builtin.c builtins/pwd_builtin.c \
-builtins/env_builtin.c builtins/exit_builtin.c builtins/export_builtin.c builtins/unset_builtin.c
-EXEC_SRC = exec/executor.c exec/executor_2.c exec/sh_data.c exec/exec_parent.c exec/exec_child.c \
-exec/open_and_dup2_redir.c exec/exec_utils.c exec/exec_utils_2.c exec/get_absolute_path.c
-SRC = main.c $(BUILTINS_SRC) $(EXEC_SRC) \
-convert_envp_to_env_list.c \
-generate_proc_list.c \
-expand_string.c \
-parser.c \
-split_str_to_list_util.c split_str_to_list.c \
-syntax_checker.c \
-t_env.c t_proc.c t_redir.c t_token.c \
-tokenizer.c \
-heredoc.c heredoc_utils.c \
-set_hdfile_list.c \
-signal_handler.c \
-prt_err.c \
-t_sh_data.c \
-minishell_utils.c
-OBJ = $(SRC:%.c=%.o)
+
+SRCS_DIR = srcs
+OBJS_DIR = objs
+INCLUDES_DIR = includes
+
+INCLUDES = -I./$(INCLUDES_DIR) -I./$(LIBFT_DIR)/$(INCLUDES_DIR)
+
+SRCS := $(shell find $(SRCS_DIR) -type f -name '*.c')
+OBJS := $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
 
 all : $(NAME)
 
-# Everytime MUST have to make all LIB_SUBDIR
-$(NAME) :
-	make -C $(LIBFT_DIR)
-ifneq ($(shell find . -name $(NAME) | wc -l | tr -d ' '), 0)
-	mv $(NAME) $(NAME).tmp
-endif
-	make $(NAME).tmp
-	mv $(NAME).tmp $(NAME)
+#-----------------------------------rules--------------------------------------#
+all : $(NAME)
 
-# Includes LIB_SUBDIR.TARGET makes LIB_SUBDIR-update
-$(NAME).tmp : $(NAME_H) $(OBJ) $(LIBFT_DIR)/$(LIBFT)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT_DIR)/$(LIBFT) $(LIBREADLINEFLAGS) -o $(NAME).tmp
+$(NAME) : $(LIBFT_DIR)/$(LIBFT) $(OBJS)
+	@rm -rf $@
+	@printf "Compiling $(NAME)..."
+	@$(CC) $(CFLAGS) $(LIBREADLINEFLAGS) -o $@ $^
+	@echo " Done !"
+
+$(LIBFT_DIR)/$(LIBFT):
+	@$(MAKE) -C $(LIBFT_DIR);
+
+$(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c
+	@printf "Compiling $<..."
+	@mkdir -p $(@D);
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $^ -o $@
+	@echo " Done !"
 
 clean :
-	rm -f $(OBJ)
-	make -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(LIBFT_DIR) clean;
+	@printf "Cleaning $(NAME)..."
+	@rm -rf $(LIBFT)
+	@rm -rf $(OBJS)
+	@echo " Done !"
 
 fclean : clean
-	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(LIBFT_DIR) fclean;
+	@printf "Force cleaning $(NAME)..."
+	@rm -rf $(NAME)
+	@echo "Done !"
 
-re :
-	make fclean
-	make all
+re : fclean all
 
-.PHONY : all clean fclean re $(NAME)
+
+#-----------------------------------phony--------------------------------------#
+.PHONY: all clean fclean re

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 //	If malloc error, return (NULL)
 //	If there is no PATH in env_list, return ( split = { NULL } )

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-#include "../builtins/builtins.h"
+#include "minishell.h"
+#include "builtins.h"
 
 void	dup2_and_close(int fd1, int fd2);
 int		open_and_dup2_redir_return(t_redir *redir);

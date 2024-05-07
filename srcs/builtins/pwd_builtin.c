@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 #include "builtins.h"
 
 static int	print_pwd_err(const int errno_getcwd)

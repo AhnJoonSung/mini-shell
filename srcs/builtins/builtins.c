@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 #include "builtins.h"
 
 //	Check proc->args[0] and specify builtin-function

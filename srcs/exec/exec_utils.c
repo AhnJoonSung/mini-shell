@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 char	*str_join_three(const char *str1, const char c, const char *str2);
 void	prt_err_entrance(int exit_code);
