@@ -17,7 +17,7 @@ INCLUDES = -I./$(INCLUDES_DIR) -I./$(LIBFT_DIR)/$(INCLUDES_DIR) -I./$(LIBRL_DIR)
 
 SRCS := $(shell find $(SRCS_DIR) -type f -name '*.c')
 OBJS := $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
-DEP := $(OBJS:%.o=%.d)
+DEPS := $(OBJS:%.o=%.d)
 
 #-----------------------------------rules--------------------------------------#
 all : $(NAME)
@@ -40,7 +40,7 @@ $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $^ -o $@
 	@echo " Done !"
 
--include $(DEP)
+-include $(DEPS)
 
 clean :
 	@$(MAKE) -C $(LIBFT_DIR) clean;
@@ -48,7 +48,7 @@ clean :
 	@printf "Cleaning $(NAME)..."
 	@rm -rf $(LIBFT)
 	@rm -rf $(LIBRL)
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJS) $(DEPS)
 	@echo " Done !"
 
 fclean : clean
