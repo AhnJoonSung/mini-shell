@@ -1,18 +1,19 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-LIBREADLINEFLAGS = -lreadline
 
 NAME = minishell
 
 LIBFT = libft.a
 LIBFT_DIR = libft
-LIBFT_H = libft.h
+
+LIBRL = libreadline.a
+LIBRL_DIR = readline
 
 SRCS_DIR = srcs
 OBJS_DIR = objs
 INCLUDES_DIR = includes
 
-INCLUDES = -I./$(INCLUDES_DIR) -I./$(LIBFT_DIR)/$(INCLUDES_DIR)
+INCLUDES = -I./$(INCLUDES_DIR) -I./$(LIBFT_DIR)/$(INCLUDES_DIR) -I./$(LIBRL_DIR)
 
 SRCS := $(shell find $(SRCS_DIR) -type f -name '*.c')
 OBJS := $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
@@ -22,14 +23,17 @@ all : $(NAME)
 #-----------------------------------rules--------------------------------------#
 all : $(NAME)
 
-$(NAME) : $(LIBFT_DIR)/$(LIBFT) $(OBJS)
+$(NAME) : $(LIBFT_DIR)/$(LIBFT) $(LIBRL_DIR)/$(LIBRL) $(OBJS)
 	@rm -rf $@
 	@printf "Compiling $(NAME)..."
-	@$(CC) $(CFLAGS) $(LIBREADLINEFLAGS) -o $@ $^
+	@$(CC) $(CFLAGS) -o $@ $^ -lreadline -lncurses
 	@echo " Done !"
 
-$(LIBFT_DIR)/$(LIBFT):
+$(LIBFT_DIR)/$(LIBFT) :
 	@$(MAKE) -C $(LIBFT_DIR);
+
+$(LIBRL_DIR)/$(LIBRL) :
+	@$(MAKE) -C $(LIBRL_DIR);
 
 $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c
 	@printf "Compiling $<..."
@@ -39,8 +43,10 @@ $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c
 
 clean :
 	@$(MAKE) -C $(LIBFT_DIR) clean;
+	@$(MAKE) -C $(LIBRL_DIR) clean;
 	@printf "Cleaning $(NAME)..."
 	@rm -rf $(LIBFT)
+	@rm -rf $(LIBRL)
 	@rm -rf $(OBJS)
 	@echo " Done !"
 

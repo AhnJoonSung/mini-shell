@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jooahn <jooahn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:34:43 by moson             #+#    #+#             */
-/*   Updated: 2023/12/15 19:36:55 by moson            ###   ########.fr       */
+/*   Updated: 2024/05/09 01:44:51 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
 
 int	search_env_content(t_list *env_list, char *key, t_node	**res);
 int	ft_has_forbidden_keyname(char *str);

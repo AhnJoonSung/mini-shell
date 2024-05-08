@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_parent.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moson <moson@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:16:07 by moson             #+#    #+#             */
-/*   Updated: 2023/12/03 11:16:08 by moson            ###   ########.fr       */
+/*   Updated: 2024/05/09 01:50:39 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ static void	close_unused_pipe(t_sh_data *sh_data, int proc_num)
 }
 
 //	If close failed: exit(ERR_CLOSE_FAILED)
-void	exec_parent(t_sh_data *sh_data, t_list *proc_list, int proc_num)
+void	exec_parent(t_sh_data *sh_data, int proc_num)
 {
-	proc_list++;
 	close_unused_pipe(sh_data, proc_num);
 	return ;
 }

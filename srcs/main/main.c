@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jooahn <jooahn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:38:42 by moson             #+#    #+#             */
-/*   Updated: 2023/12/16 23:09:21 by jooahn           ###   ########.fr       */
+/*   Updated: 2024/05/09 01:53:07 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "readline.h"
+#include "history.h"
 
 int	g_exit_code = 0;
 

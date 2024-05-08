@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exec_child.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jooahn <jooahn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 11:16:14 by moson             #+#    #+#             */
-/*   Updated: 2023/12/15 19:34:23 by jooahn           ###   ########.fr       */
+/*   Updated: 2024/05/09 01:44:51 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
 
 void	dup2_and_close(int fd1, int fd2);
 char	*get_absolute_path(t_sh_data *sh_data, char *cmd);

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   exit_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moson <moson@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:35:08 by moson             #+#    #+#             */
-/*   Updated: 2023/11/18 16:35:09 by moson            ###   ########.fr       */
+/*   Updated: 2024/05/09 01:44:51 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
 
 static int	print_exit_err(const int errno_exit)
 {

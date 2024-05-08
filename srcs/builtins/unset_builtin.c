@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   unset_builtin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moson <moson@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 16:34:52 by moson             #+#    #+#             */
-/*   Updated: 2023/11/18 16:34:53 by moson            ###   ########.fr       */
+/*   Updated: 2024/05/09 01:44:51 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
 
 int	search_env_content(t_list *env_list, char *key, t_node	**res);
 

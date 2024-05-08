@@ -6,12 +6,13 @@
 /*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 23:04:26 by moson             #+#    #+#             */
-/*   Updated: 2023/11/28 23:00:14 by ahn              ###   ########.fr       */
+/*   Updated: 2024/05/09 01:45:50 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
+#include <string.h>
 
 int	get_args_len(char **args);
 

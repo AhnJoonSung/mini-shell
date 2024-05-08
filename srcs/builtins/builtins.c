@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moson <moson@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 05:26:06 by moson             #+#    #+#             */
-/*   Updated: 2023/11/15 05:26:08 by moson            ###   ########.fr       */
+/*   Updated: 2024/05/09 01:44:51 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
 
 //	Check proc->args[0] and specify builtin-function
 //	If error return NULL

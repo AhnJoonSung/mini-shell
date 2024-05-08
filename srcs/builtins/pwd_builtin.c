@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pwd_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moson <moson@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 23:04:43 by moson             #+#    #+#             */
-/*   Updated: 2023/11/16 23:04:44 by moson            ###   ########.fr       */
+/*   Updated: 2024/05/09 01:48:56 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
+#include <string.h>
 
 static int	print_pwd_err(const int errno_getcwd)
 {
@@ -24,13 +25,11 @@ static int	print_pwd_err(const int errno_getcwd)
 }
 
 //	Return exit code of getcwd()
-int	pwd_builtin(t_sh_data *sh_data, t_proc *proc)
+int	pwd_builtin(void)
 {
 	char	*buf;
 	int		errno_getcwd;
 
-	sh_data++;
-	proc++;
 	errno_getcwd = 0;
 	buf = getcwd(NULL, 0);
 	if (buf == NULL)

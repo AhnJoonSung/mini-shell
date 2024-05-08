@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   signal_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jooahn <jooahn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 23:14:14 by jooahn            #+#    #+#             */
-/*   Updated: 2023/12/15 20:51:33 by jooahn           ###   ########.fr       */
+/*   Updated: 2024/05/09 01:39:18 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "readline.h"
 
 extern int	g_exit_code;
 

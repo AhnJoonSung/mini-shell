@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jooahn <jooahn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:58:52 by ahn               #+#    #+#             */
-/*   Updated: 2023/12/15 23:37:36 by jooahn           ###   ########.fr       */
+/*   Updated: 2024/05/09 01:41:44 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "readline.h"
 
 static void	heredoc_process(t_list *proc_list, t_sh_data *sh_data);
 static void	heredoc_to_file(t_list *redir_list, \

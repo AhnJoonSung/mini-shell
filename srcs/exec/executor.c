@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   executor.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jooahn <jooahn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 13:00:42 by moson             #+#    #+#             */
-/*   Updated: 2023/12/16 00:25:17 by jooahn           ###   ########.fr       */
+/*   Updated: 2024/05/09 01:51:36 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-#include "builtins.h"
+#include "my_builtins.h"
 
 void	*get_builtin_ptr(t_proc *proc);
 
-void	exec_parent(t_sh_data *sh_data, t_list *proc_list, int proc_num);
+void	exec_parent(t_sh_data *sh_data, int proc_num);
 void	exec_child(t_sh_data *sh_data, t_list *proc_list, int proc_num);
 void	set_io_fd(t_sh_data *sh_data, t_list *proc_list, int proc_num);
 char	*get_absolute_path(t_sh_data *sh_data, char *cmd);
@@ -24,13 +24,12 @@ void	restore_io_fd(t_sh_data *sh_data);
 int		set_io_fd_single_cmd(t_sh_data *sh_data, \
 t_list *proc_list, int proc_num);
 
-void	wait_all_child(t_sh_data *sh_data, t_list *proc_list)
+void	wait_all_child(t_sh_data *sh_data)
 {
 	int		pid;
 	int		status;
 	int		cnt;
 
-	proc_list++;
 	pid = wait(&status);
 	while (pid != -1)
 	{
@@ -78,7 +77,7 @@ static int	single_cmd(t_sh_data *sh_data, t_list *proc_list)
 		if (sh_data->child_pid[0] == 0)
 			exec_single(sh_data, proc);
 	}
-	wait_all_child(sh_data, proc_list);
+	wait_all_child(sh_data);
 	restore_io_fd(sh_data);
 	return (sh_data->exit_status[0]);
 }
@@ -97,11 +96,11 @@ static int	multi_cmds(t_sh_data *sh_data, t_list *proc_list)
 		if (sh_data->child_pid[cnt] == -1)
 			exit_wrapper(ERR_FORK_FAILED, NULL);
 		if (0 < sh_data->child_pid[cnt])
-			exec_parent(sh_data, proc_list, cnt);
+			exec_parent(sh_data, cnt);
 		else
 			exec_child(sh_data, proc_list, cnt);
 	}
-	wait_all_child(sh_data, proc_list);
+	wait_all_child(sh_data);
 	return (sh_data->exit_status[sh_data->proc_size - 1]);
 }
 

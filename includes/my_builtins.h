@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins.h                                         :+:      :+:    :+:   */
+/*   my_builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moson <moson@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_H
-# define BUILTINS_H
+#ifndef MY_BUILTINS_H
+# define MY_BUILTINS_H
 
 # include "libft.h"
 # include <errno.h>
@@ -46,7 +46,7 @@
 int	exec_builtin(t_sh_data *sh_data, t_proc *proc);
 
 int	echo_builtin(t_sh_data *sh_data, t_proc *proc);
-int	pwd_builtin(t_sh_data *sh_data, t_proc *proc);
+int	pwd_builtin(void);
 int	cd_builtin(t_sh_data *sh_data, t_proc *proc);
 int	env_builtin(t_sh_data *sh_data, t_proc *proc);
 int	unset_builtin(t_sh_data *sh_data, t_proc *proc);

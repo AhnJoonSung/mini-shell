@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jooahn <jooahn@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ahn <ahn@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:34:10 by moson             #+#    #+#             */
-/*   Updated: 2023/12/16 23:11:17 by jooahn           ###   ########.fr       */
+/*   Updated: 2024/05/09 01:30:41 by ahn              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include "libft.h"
 # include <stdio.h>
-# include <readline/history.h>
-# include <readline/readline.h>
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
