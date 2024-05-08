@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -MMD
 
 NAME = minishell
 
@@ -17,8 +17,7 @@ INCLUDES = -I./$(INCLUDES_DIR) -I./$(LIBFT_DIR)/$(INCLUDES_DIR) -I./$(LIBRL_DIR)
 
 SRCS := $(shell find $(SRCS_DIR) -type f -name '*.c')
 OBJS := $(patsubst $(SRCS_DIR)/%.c,$(OBJS_DIR)/%.o,$(SRCS))
-
-all : $(NAME)
+DEP := $(OBJS:%.o=%.d)
 
 #-----------------------------------rules--------------------------------------#
 all : $(NAME)
@@ -41,6 +40,8 @@ $(OBJS_DIR)/%.o : $(SRCS_DIR)/%.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $^ -o $@
 	@echo " Done !"
 
+-include $(DEP)
+
 clean :
 	@$(MAKE) -C $(LIBFT_DIR) clean;
 	@$(MAKE) -C $(LIBRL_DIR) clean;
@@ -57,7 +58,6 @@ fclean : clean
 	@echo "Done !"
 
 re : fclean all
-
 
 #-----------------------------------phony--------------------------------------#
 .PHONY: all clean fclean re
